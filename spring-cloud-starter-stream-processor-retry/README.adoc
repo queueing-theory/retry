@@ -1,0 +1,44 @@
+//tag::ref-doc[]
+= Retry Processor
+
+== Input
+
+=== Headers
+
+=== Payload
+== Output
+
+=== Headers
+
+=== Payload
+//end::ref-doc[]
+
+== Options
+
+The **$$retry$$** $$processor$$ has the following options:
+
+== Build
+
+```
+$ ./mvnw clean install -PgenerateApps
+$ cd apps
+```
+You can find the corresponding binder based projects here.
+You can then cd into one of the folders and build it:
+```
+$ ./mvnw clean package
+```
+
+== Examples
+
+```
+java -jar retry-processor-kafka-2.1.0.BUILD-SNAPSHOT.jar  \
+    --spring.cloud.stream.bindings.input.destination=httpErrorResponse \
+    --spring.cloud.stream.bindings.retry.destination=output \
+    --spring.cloud.stream.bindings.output.destination=input  \
+    --spring.cloud.stream.bindings.input.group=retry  \
+    --retry.duration=1m
+```
+
+
+
